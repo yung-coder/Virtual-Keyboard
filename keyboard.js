@@ -41,7 +41,7 @@ const Keyboard = {
   _createKeys() {
     const fragment = document.createDocumentFragment();
     const keyLayout = [
-        "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "backspace",
+        "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "backspace" , "del",
 
         "q", "w", "e", "r", "t", "y", "u", "i", "o", "p",
 
@@ -115,6 +115,17 @@ const Keyboard = {
                KeyElement.addEventListener('click' , () => {
                 this.close();
                 this._triggerEvent('onclose');
+            });
+
+            break;
+
+            case "del": 
+               KeyElement.classList.add("keyboard__key--wide");
+               KeyElement.innerHTML  = creatIconHTML('delete');
+
+               KeyElement.addEventListener('click' , () => {
+                 this.properties.value = ' ';
+                 this._triggerEvent("oninput");
             });
 
             break;
